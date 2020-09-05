@@ -21,7 +21,7 @@ font = py.font.SysFont(None,30)
 
 
 def text_on_screen(text,color,x,y):
-    '''this function is for printing the score on the screen i.e  game window '''
+    '''this function is for printing the score on the  game window '''
     screen_text = font.render(text,True,color)
     gameWindow.blit(screen_text,[x,y])
 
@@ -47,7 +47,6 @@ def welcome():
     while not exit_game:
         gameWindow.fill(black)
         gameWindow.blit(bgimg1,(0,0))
-        # text_on_screen("WELCOME TO SNAKE GAME",white,180,150)
         text_on_screen("PRESS SPACE BAR TO PLAY GAME",white,130,280)
         for event in py.event.get():
                 if event.type == py.QUIT:
@@ -103,17 +102,29 @@ def gameloop():
                     exit_game = True
                 if event.type == py.KEYDOWN:
                     if event.key == py.K_RIGHT or event.key == py.K_d:
-                        velocity_x = init__velocity
-                        velocity_y = 0
+                        if velocity_x == -init__velocity and snake_length != 1:
+                            continue
+                        else:
+                            velocity_x = init__velocity
+                            velocity_y = 0
                     if event.key == py.K_LEFT or event.key == py.K_a:
-                        velocity_x = -init__velocity
-                        velocity_y = 0
+                        if velocity_x == init__velocity and snake_length != 1:
+                            continue
+                        else:
+                            velocity_x = -init__velocity
+                            velocity_y = 0
                     if event.key == py.K_DOWN or event.key == py.K_s:
-                        velocity_y = init__velocity
-                        velocity_x = 0
+                        if velocity_y == -init__velocity and snake_length != 1:
+                            continue
+                        else:
+                            velocity_y = init__velocity
+                            velocity_x = 0
                     if event.key == py.K_UP or event.key == py.K_w:
-                        velocity_y = -init__velocity
-                        velocity_x = 0
+                        if velocity_y == init__velocity and snake_length != 1:
+                            continue
+                        else:
+                            velocity_y = -init__velocity
+                            velocity_x = 0
                     if event.key == py.K_q:
                         score += 5
                 
