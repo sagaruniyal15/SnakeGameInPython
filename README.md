@@ -2,7 +2,7 @@
 
 This game is made in Python 3.8.2 using pygame module
 
-**To play the game simply run the sanke.py file**
+**To play the game simply run the snake.py file**
 
 ## Installing pygme module
 
